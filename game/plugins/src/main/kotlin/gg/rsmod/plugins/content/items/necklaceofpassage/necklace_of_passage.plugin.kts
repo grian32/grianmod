@@ -47,7 +47,7 @@ NECKLACES.forEach { necklace ->
                 title = "<col=800000>Teleport to...</col>"
             )
 
-            val slot = player.getInteractingItemSlot();
+            val slot = player.getInteractingItemSlot()
 
             when (player.inventory[slot]?.id) {
                 Items.NECKLACE_OF_PASSAGE5 -> player.inventory[slot] = Item(Items.NECKLACE_OF_PASSAGE4, 1)
@@ -59,23 +59,18 @@ NECKLACES.forEach { necklace ->
             }
 
             when (option) {
-                // TODO: abstract this into a function once code is finalized
                 // was getting @ me over nulls so i just hardcoded the tile
-                1 -> {
-                    player.teleport(Tile(3113, 3180), TeleportType.MODERN)
-                    world.spawn(AreaSound(player.tile, 200, 5, 1))
-                }
-                2 -> {
-                    player.teleport(Tile(2428, 3350), TeleportType.MODERN)
-                    world.spawn(AreaSound(player.tile, 200, 5, 1))
-                }
-                3 -> {
-                    player.teleport(Tile(3405, 3158), TeleportType.MODERN)
-                    world.spawn(AreaSound(player.tile, 200, 5, 1))
-                }
+                1 -> rubTeleport(Tile(3113, 3180), player)
+                2 -> rubTeleport(Tile(2428, 3350), player)
+                3 -> rubTeleport(Tile(3405, 3158), player)
                 4 -> return@queue
                 else -> println("Something went really wrong with Necklaces Of Passage! D:")
            }
         }
     }
+}
+
+fun rubTeleport(tile: Tile, player: Player) {
+    player.teleport(tile, TeleportType.MODERN)
+    world.spawn(AreaSound(player.tile, 200, 5, 1))
 }
