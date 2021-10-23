@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.npcs.jorral
+package gg.rsmod.plugins.content.areas.outpost
 
 spawn_npc(3490, 2437, 3347, direction = Direction.WEST)
 
