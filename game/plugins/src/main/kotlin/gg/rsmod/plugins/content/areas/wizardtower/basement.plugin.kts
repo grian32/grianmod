@@ -1,5 +1,7 @@
 package gg.rsmod.plugins.content.areas.wizardtower
 
+// TODO: figure out why rune essence mine loc isnt same as osrs =[
+
 spawn_npc(Npcs.CHICKEN_1173, 3109, 9568, walkRadius = 3)
 spawn_npc(Npcs.SEDRIDOR, 3102, 9570, walkRadius = 5)
 
@@ -33,10 +35,14 @@ on_npc_option(Npcs.SEDRIDOR, "talk-to") {
             }
             2 -> {
                 chatPlayer("Can you teleport me to the Rune Essence?")
-                runeEssenceTeleport(player)
+                player.message("Nothing interesting happens.")
             }
         }
     }
+}
+
+on_npc_option(Npcs.SEDRIDOR, "teleport") {
+    player.message("Nothing interesting happens.")
 }
 
 listOf(381, 380).forEach {
@@ -49,8 +55,4 @@ listOf(381, 380).forEach {
             ).random()
         )
     }
-}
-
-fun runeEssenceTeleport(player: Player) {
-
 }

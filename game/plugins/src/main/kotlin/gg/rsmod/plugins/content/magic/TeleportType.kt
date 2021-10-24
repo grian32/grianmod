@@ -11,5 +11,6 @@ enum class TeleportType(val teleportDelay: Int, val animation: Int, val endAnima
     GLORY(teleportDelay = 4, animation = 714, graphic = Graphic(111, 92), wildLvlRestriction = 30),
     ANCIENT(teleportDelay = 5, animation = 1979, graphic = Graphic(392, 0)),
     LUNAR(teleportDelay = 4, animation = 1816, graphic = Graphic(747, 120)),
-    ARCEUUS(teleportDelay = 4, animation = 1816, graphic = Graphic(747, 120))
+    ARCEUUS(teleportDelay = 4, animation = 1816, graphic = Graphic(747, 120)),
+    RUNE_ESSENCE_MINE(teleportDelay = 4, animation = -1, graphic = Graphic(110, 0))
 }
