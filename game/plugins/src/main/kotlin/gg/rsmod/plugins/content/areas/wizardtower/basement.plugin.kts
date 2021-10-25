@@ -62,5 +62,6 @@ listOf(381, 380).forEach {
 
 fun runeEssenceTeleport(player: Player) {
     player.teleport(Tile(2910, 4832), TeleportType.RUNE_ESSENCE_MINE)
-    // TODO: npc does a graphic, like 108 iirc
+    player.getInteractingNpc().graphic(108)
+    world.spawn(AreaSound(player.tile, 200, 5, 1))
 }
