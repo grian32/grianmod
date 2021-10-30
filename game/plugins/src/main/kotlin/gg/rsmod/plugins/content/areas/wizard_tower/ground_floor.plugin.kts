@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.areas.wizardtower
+package gg.rsmod.plugins.content.areas.wizard_tower
 
 val MESSAGES = listOf(
     "Living with a Wizard Husband - a Housewife's Story",

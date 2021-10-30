@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.areas.wizardtower
+package gg.rsmod.plugins.content.areas.wizard_tower
 
 import gg.rsmod.plugins.content.magic.TeleportType
 import gg.rsmod.plugins.content.magic.teleport

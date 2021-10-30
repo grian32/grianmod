@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.areas.runeessencemine
+package gg.rsmod.plugins.content.areas.rune_essence_mine
 
 import gg.rsmod.plugins.content.magic.TeleportType
 import gg.rsmod.plugins.content.magic.teleport
