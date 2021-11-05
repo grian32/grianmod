@@ -6,9 +6,13 @@ on_world_init {
     world.getService(LadderService::class.java)?.let { service ->
         service.gates.climbUp.forEach { ladder ->
             on_obj_option(ladder.id, "climb-up") {
-                ladder.locations.forEach {
-                    if (player.tile == Tile(it.start[0], it.start[1], it.start[2])) {
-                        player.moveTo(Tile(it.end[0], it.end[1], it.end[2]))
+                ladder.locations.forEach { loc ->
+                    player.queue {
+                        if (player.tile == Tile(loc.start[0], loc.start[1], loc.start[2])) {
+                            player.animate(828)
+                            wait(2)
+                            player.moveTo(Tile(loc.end[0], loc.end[1], loc.end[2]))
+                        }
                     }
                 }
             }
@@ -16,9 +20,13 @@ on_world_init {
 
         service.gates.climbDown.forEach { ladder ->
             on_obj_option(ladder.id, "climb-down") {
-                ladder.locations.forEach {
-                    if (player.tile == Tile(it.start[0], it.start[1], it.start[2])) {
-                        player.moveTo(Tile(it.end[0], it.end[1], it.end[2]))
+                ladder.locations.forEach { loc ->
+                    player.queue {
+                        if (player.tile == Tile(loc.start[0], loc.start[1], loc.start[2])) {
+                            player.animate(827)
+                            wait(2)
+                            player.moveTo(Tile(loc.end[0], loc.end[1], loc.end[2]))
+                        }
                     }
                 }
             }
