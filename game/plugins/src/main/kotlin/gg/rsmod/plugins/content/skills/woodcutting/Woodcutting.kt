@@ -40,7 +40,7 @@ object Woodcutting {
                 p.filterableMessage("You get some ${logName.pluralSuffix(2)}.")
                 p.playSound(3600)
                 p.inventory.add(tree.log)
-                p.addXp(Skills.WOODCUTTING, tree.xp)
+                p.addWoodcuttingXp(tree.xp)
 
                 if (p.world.random(tree.depleteChance) == 0) {
                     p.animate(-1)

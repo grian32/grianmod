@@ -13,6 +13,7 @@ private val TREES = setOf(
 
         Tree(TreeType.YEW, obj = 1753, trunk = 9714),
         Tree(TreeType.YEW, obj = 1754, trunk = 9714),
+        Tree(TreeType.YEW, obj = 10822, trunk = 9714),
 
         Tree(TreeType.REDWOOD, obj = 29668, trunk = 29669),
         Tree(TreeType.REDWOOD, obj = 29670, trunk = 29671)

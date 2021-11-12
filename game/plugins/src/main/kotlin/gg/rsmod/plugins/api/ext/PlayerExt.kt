@@ -17,6 +17,7 @@ import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.timer.SKULL_ICON_DURATION_TIMER
 import gg.rsmod.game.sync.block.UpdateBlockType
 import gg.rsmod.plugins.api.*
+import gg.rsmod.plugins.api.cfg.Items
 import gg.rsmod.plugins.service.marketvalue.ItemMarketValueService
 import gg.rsmod.util.BitManipulation
 
@@ -521,3 +522,24 @@ fun Player.getRangedStrengthBonus(): Int = equipmentBonuses[11]
 fun Player.getMagicDamageBonus(): Int = equipmentBonuses[12]
 
 fun Player.getPrayerBonus(): Int = equipmentBonuses[13]
+
+fun Player.addWoodcuttingXp(xp: Double) {
+    var multiplier = 1.0
+
+    if (hasEquipped(EquipmentType.HEAD, Items.LUMBERJACK_HAT)) multiplier += 0.004
+
+    if (hasEquipped(EquipmentType.CHEST, Items.LUMBERJACK_TOP)) multiplier += 0.008
+
+    if (hasEquipped(EquipmentType.LEGS, Items.LUMBERJACK_LEGS)) multiplier += 0.006
+
+    if (hasEquipped(EquipmentType.BOOTS, Items.LUMBERJACK_BOOTS)) multiplier += 0.002
+
+    if (hasEquipped(intArrayOf(
+            Items.LUMBERJACK_HAT,
+            Items.LUMBERJACK_TOP,
+            Items.LUMBERJACK_LEGS,
+            Items.LUMBERJACK_BOOTS
+        ))) multiplier += 0.005
+
+    addXp(Skills.WOODCUTTING, xp * multiplier)
+}
