@@ -1,6 +1,5 @@
-package gg.rsmod.plugins.content.skills.herblore
+package gg.rsmod.plugins.content.skills.herblore.action
 
-import gg.rsmod.game.model.entity.Player
 import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.queue.QueueTask
 import gg.rsmod.plugins.api.ChatMessageType
@@ -9,6 +8,7 @@ import gg.rsmod.plugins.api.ext.getInteractingItemSlot
 import gg.rsmod.plugins.api.ext.message
 import gg.rsmod.plugins.api.ext.playSound
 import gg.rsmod.plugins.api.ext.player
+import gg.rsmod.plugins.content.skills.herblore.data.Herb
 
 object CleaningAction {
 
@@ -16,8 +16,10 @@ object CleaningAction {
         val player = it.player
 
         if (player.getSkills().getCurrentLevel(Skills.HERBLORE) < herb.requiredLevel) {
-            // TODO: check what the actual message is on rs
-            player.message("You do not have a high enough herblore level to clean ${herb.grimyName}s")
+            player.message(
+                "You need level ${herb.requiredLevel} herblore to clean the ${herb.grimyName}",
+                ChatMessageType.GAME_MESSAGE
+            )
             return
         }
 
@@ -46,6 +48,5 @@ object CleaningAction {
             player.addXp(Skills.HERBLORE, herb.xpGained)
             it.wait(2)
         }
-
     }
 }

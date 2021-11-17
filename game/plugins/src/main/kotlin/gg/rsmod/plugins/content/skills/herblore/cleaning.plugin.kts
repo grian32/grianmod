@@ -1,5 +1,8 @@
 package gg.rsmod.plugins.content.skills.herblore
 
+import gg.rsmod.plugins.content.skills.herblore.action.CleaningAction
+import gg.rsmod.plugins.content.skills.herblore.data.Herb
+
 private val HERBS = listOf(
     Herb(Items.GRIMY_GUAM_LEAF, Items.GUAM_LEAF, 2.5, 3, "Grimy guam leaf"),
     Herb(Items.GRIMY_MARRENTILL, Items.MARRENTILL, 3.8, 5, "Grimy marrentill"),

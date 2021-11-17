@@ -1,3 +1,3 @@
-package gg.rsmod.plugins.content.skills.herblore
+package gg.rsmod.plugins.content.skills.herblore.data
 
 data class Herb(val grimyHerb: Int, val cleanHerb: Int, val xpGained: Double, val requiredLevel: Int, val grimyName: String)
