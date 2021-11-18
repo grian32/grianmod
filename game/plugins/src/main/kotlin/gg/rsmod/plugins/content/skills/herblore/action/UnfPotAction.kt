@@ -1,5 +1,6 @@
 package gg.rsmod.plugins.content.skills.herblore.action
 
+import gg.rsmod.game.fs.def.ItemDef
 import gg.rsmod.game.model.entity.AreaSound
 import gg.rsmod.game.model.item.Item
 import gg.rsmod.game.model.queue.QueueTask
@@ -16,7 +17,10 @@ object UnfPotAction {
     const val COMBINING_ANIMATION = 363
 
     suspend fun makeUnfPot(it: QueueTask, unfPot: UnfPot) {
+
         val player = it.player
+
+        val herbName = player.world.definitions.get(ItemDef::class.java, unfPot.cleanHerb).name.capitalizeSentence()
 
         if (player.getSkills().getCurrentLevel(Skills.HERBLORE) < unfPot.requiredLevel) {
             it.messageBox("You need ${unfPot.requiredLevel} Herblore to combine those.")
@@ -31,7 +35,7 @@ object UnfPotAction {
             player.world.spawn(AreaSound(player.tile, 2266, 1, 1))
             player.animate(COMBINING_ANIMATION)
             player.world.spawn(AreaSound(player.tile, 2608, 1, 1))
-            player.message("You put the ${unfPot.herbName} into the vial of water")
+            player.message("You put the $herbName into the vial of water.")
 
             player.inventory[player.inventory.getItemIndex(unfPot.cleanHerb, true)] = null
             player.inventory[player.inventory.getItemIndex(Items.VIAL_OF_WATER, true)] = Item(unfPot.unfPot)
@@ -46,7 +50,7 @@ object UnfPotAction {
             player.world.spawn(AreaSound(player.tile, 2266, 1, 1))
             player.animate(COMBINING_ANIMATION)
             player.world.spawn(AreaSound(player.tile, 2608, 1, 1))
-            player.message("You put the ${unfPot.herbName} into the vial of water")
+            player.message("You put the $herbName into the vial of water.")
 
             val herbIndex = player.inventory.getItemIndex(unfPot.cleanHerb, true)
             val vialIndex = player.inventory.getItemIndex(Items.VIAL_OF_WATER, true)

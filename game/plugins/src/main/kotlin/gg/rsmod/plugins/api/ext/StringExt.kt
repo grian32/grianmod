@@ -20,3 +20,5 @@ fun String.pluralSuffix(amount: Int): String {
 fun String.prefixAn() : String {
     return if (vowels.indexOf(Character.toLowerCase(this[0])) != -1) "an $this" else "a $this"
 }
+
+fun String.capitalizeSentence(): String = split(" ").joinToString(" ") { it.capitalize() }
