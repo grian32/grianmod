@@ -17,8 +17,8 @@ object UnfPotAction {
     const val COMBINING_ANIMATION = 363
 
     suspend fun makeUnfPot(it: QueueTask, unfPot: UnfPot) {
-
         val player = it.player
+        val inventory = player.inventory
 
         val herbName = player.world.definitions.get(ItemDef::class.java, unfPot.cleanHerb).name.capitalizeSentence()
 
@@ -28,8 +28,8 @@ object UnfPotAction {
 
         var potAmount = 0
 
-        val herbAmount = player.inventory.getItemCount(unfPot.cleanHerb)
-        val vialAmount = player.inventory.getItemCount(Items.VIAL_OF_WATER)
+        val herbAmount = inventory.getItemCount(unfPot.cleanHerb)
+        val vialAmount = inventory.getItemCount(Items.VIAL_OF_WATER)
 
         if (min(herbAmount, vialAmount) == 1) {
             player.world.spawn(AreaSound(player.tile, 2266, 1, 1))
@@ -37,8 +37,8 @@ object UnfPotAction {
             player.world.spawn(AreaSound(player.tile, 2608, 1, 1))
             player.message("You put the $herbName into the vial of water.")
 
-            player.inventory[player.inventory.getItemIndex(unfPot.cleanHerb, true)] = null
-            player.inventory[player.inventory.getItemIndex(Items.VIAL_OF_WATER, true)] = Item(unfPot.unfPot)
+            inventory[inventory.getItemIndex(unfPot.cleanHerb, true)] = null
+            inventory[inventory.getItemIndex(Items.VIAL_OF_WATER, true)] = Item(unfPot.unfPot)
             return
         }
 
@@ -52,15 +52,15 @@ object UnfPotAction {
             player.world.spawn(AreaSound(player.tile, 2608, 1, 1))
             player.message("You put the $herbName into the vial of water.")
 
-            val herbIndex = player.inventory.getItemIndex(unfPot.cleanHerb, true)
-            val vialIndex = player.inventory.getItemIndex(Items.VIAL_OF_WATER, true)
+            val herbIndex = inventory.getItemIndex(unfPot.cleanHerb, true)
+            val vialIndex = inventory.getItemIndex(Items.VIAL_OF_WATER, true)
 
             if (herbIndex == -1 || vialIndex == -1) {
                 return@repeat
             }
 
-            player.inventory[herbIndex] = null
-            player.inventory[vialIndex] = Item(unfPot.unfPot)
+            inventory[herbIndex] = null
+            inventory[vialIndex] = Item(unfPot.unfPot)
             it.wait(2)
         }
 

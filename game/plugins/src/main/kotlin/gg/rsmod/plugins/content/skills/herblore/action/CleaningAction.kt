@@ -12,6 +12,7 @@ object CleaningAction {
 
     suspend fun cleanHerb(it: QueueTask, herb: Herb) {
         val player = it.player
+        val inventory = player.inventory
 
         val grimyName = player.world.definitions.get(ItemDef::class.java, herb.grimyHerb).name
 
@@ -23,12 +24,12 @@ object CleaningAction {
             return
         }
 
-        player.inventory[player.getInteractingItemSlot()] = Item(herb.cleanHerb)
+        inventory[player.getInteractingItemSlot()] = Item(herb.cleanHerb)
         player.message("You clean the $grimyName.", ChatMessageType.SPAM)
         player.playSound(3923)
         player.addXp(Skills.HERBLORE, herb.xpGained)
 
-        val amount = player.inventory.getItemCount(herb.grimyHerb)
+        val amount = inventory.getItemCount(herb.grimyHerb)
 
         repeat(amount) { index ->
             if (index == 0) {
@@ -36,13 +37,13 @@ object CleaningAction {
                 it.wait(3)
             }
 
-            val itemIndex = player.inventory.getItemIndex(herb.grimyHerb, true)
+            val itemIndex = inventory.getItemIndex(herb.grimyHerb, true)
 
             if (itemIndex == -1) {
                 return
             }
 
-            player.inventory[itemIndex] = Item(herb.cleanHerb)
+            inventory[itemIndex] = Item(herb.cleanHerb)
             player.message("You clean the $grimyName.", ChatMessageType.SPAM)
             player.playSound(3923)
             player.addXp(Skills.HERBLORE, herb.xpGained)
