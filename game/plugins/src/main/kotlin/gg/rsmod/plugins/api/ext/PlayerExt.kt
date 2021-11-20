@@ -82,6 +82,10 @@ fun Player.setComponentText(interfaceId: Int, component: Int, text: String) {
     write(IfSetTextMessage(interfaceId, component, text))
 }
 
+fun Player.setComponentTextColor(interfaceId: Int, component: Int, red: Int, green: Int, blue: Int) {
+    write(IfSetColorMessage(interfaceId, component, red, green, blue))
+}
+
 fun Player.setComponentHidden(interfaceId: Int, component: Int, hidden: Boolean) {
     write(IfSetHideMessage(hash = ((interfaceId shl 16) or component), hidden = hidden))
 }

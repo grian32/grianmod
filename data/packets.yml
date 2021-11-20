@@ -338,6 +338,17 @@ out-packets:
       - name: text
         type: BYTES
 
+  - message: gg.rsmod.game.message.impl.IfSetColorMessage
+    type: FIXED
+    opcode: 24
+    structure:
+      - name: hash
+        order: MIDDLE
+        type: INT
+      - name: color
+        order: BIG
+        type: SHORT
+
   - message: gg.rsmod.game.message.impl.UpdateRunEnergyMessage
     type: FIXED
     opcode: 60
