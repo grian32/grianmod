@@ -1455,11 +1455,13 @@ in-packets:
     length: 8
     ignore: true
 
-  - message: gg.rsmod.game.message.impl.IgnoreMessage # Unknown
+  - message: gg.rsmod.game.message.impl.OpModelMessage
     type: FIXED
     opcode: 69
     length: 4
-    ignore: true
+    structure:
+      - name: hash
+        type: INT
 
   - message: gg.rsmod.game.message.impl.IgnoreMessage # TODO: OPOBJ2
     type: FIXED

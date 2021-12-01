@@ -144,6 +144,12 @@ class PluginRepository(val world: World) {
     private val buttonPlugins = Int2ObjectOpenHashMap<Plugin.() -> Unit>()
 
     /**
+     * A map of OpModel plugins. The key is a shifted value of the parent
+     * and child id.
+     */
+    private val opModelPlugins = Int2ObjectOpenHashMap<Plugin.() -> Unit>()
+
+    /**
      * A map of equipment option plugins.
      */
     private val equipmentOptionPlugins = Int2ObjectOpenHashMap<Plugin.() -> Unit>()
@@ -850,6 +856,26 @@ class PluginRepository(val world: World) {
     fun executeButton(p: Player, parent: Int, child: Int): Boolean {
         val hash = (parent shl 16) or child
         val plugin = buttonPlugins[hash]
+        if (plugin != null) {
+            p.executePlugin(plugin)
+            return true
+        }
+        return false
+    }
+
+    fun bindOpModel(parent: Int, child: Int, plugin: Plugin.() -> Unit) {
+        val hash = (parent shl 16) or child
+        if (opModelPlugins.containsKey(hash)) {
+            logger.error("OpModel hash already bound to a plugin: [parent=$parent, child=$child]")
+            throw IllegalStateException("OpModel hash already bound to a plugin: [parent=$parent, child=$child]")
+        }
+        opModelPlugins[hash] = plugin
+        pluginCount++
+    }
+
+    fun executeOpModel(p: Player, parent: Int, child: Int): Boolean {
+        val hash = (parent shl 16) or child
+        val plugin = opModelPlugins[hash]
         if (plugin != null) {
             p.executePlugin(plugin)
             return true
