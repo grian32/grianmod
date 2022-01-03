@@ -8,9 +8,9 @@ val HIDES = listOf(
     TannableHide(Items.SNAKE_HIDE_7801, Items.SNAKESKIN, "Snakeskin", 20),
     TannableHide(Items.SNAKE_HIDE, Items.SNAKESKIN, "Snakeskin", 15),
     TannableHide(Items.GREEN_DRAGONHIDE, Items.GREEN_DRAGON_LEATHER, "Green d'hide", 20),
-    TannableHide(Items.BLUE_DRAGONHIDE, Items.BLUE_DRAGON_LEATHER,"Blue d'hide", 20),
-    TannableHide(Items.RED_DRAGONHIDE, Items.RED_DRAGON_LEATHER,"Red d'hide", 20),
-    TannableHide(Items.BLACK_DRAGONHIDE, Items.BLACK_DRAGON_LEATHER,"Black d'hide", 20)
+    TannableHide(Items.BLUE_DRAGONHIDE, Items.BLUE_DRAGON_LEATHER, "Blue d'hide", 20),
+    TannableHide(Items.RED_DRAGONHIDE, Items.RED_DRAGON_LEATHER, "Red d'hide", 20),
+    TannableHide(Items.BLACK_DRAGONHIDE, Items.BLACK_DRAGON_LEATHER, "Black d'hide", 20)
 )
 
 on_interface_open(TANNING_INTERFACE) {
