@@ -174,6 +174,8 @@ open class Player(world: World) : Pawn(world) {
 
     var appearance = Appearance.DEFAULT
 
+    var anims = intArrayOf(808, 823, 819, 820, 821, 822, 824)
+
     var weight = 0.0
 
     var skullIcon = -1
@@ -231,6 +233,41 @@ open class Player(world: World) : Pawn(world) {
     fun forceMove(movement: ForcedMovement) {
         blockBuffer.forceMovement = movement
         addBlock(UpdateBlockType.FORCE_MOVEMENT)
+    }
+
+    fun updateAnims(
+        runAnim: Int,
+        walkForwardAnim: Int,
+        walkBackwardsAnim: Int,
+        walkLeftAnim: Int,
+        walkRightAnim: Int,
+        standAnim: Int,
+        turnOnSpotAnim: Int
+    ) {
+        anims = intArrayOf(
+            runAnim,
+            walkForwardAnim,
+            walkBackwardsAnim,
+            walkLeftAnim,
+            walkRightAnim,
+            standAnim,
+            turnOnSpotAnim
+        )
+        addBlock(UpdateBlockType.APPEARANCE)
+    }
+
+    fun updateAnims(
+        anims: IntArray
+    ) {
+        updateAnims(
+            anims[0],
+            anims[1],
+            anims[2],
+            anims[3],
+            anims[4],
+            anims[5],
+            anims[6]
+        )
     }
 
     suspend fun forceMove(task: QueueTask, movement: ForcedMovement, cycleDuration: Int = movement.maxDuration / 30) {

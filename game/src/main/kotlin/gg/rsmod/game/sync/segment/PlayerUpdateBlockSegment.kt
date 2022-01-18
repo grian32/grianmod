@@ -169,7 +169,7 @@ class PlayerUpdateBlockSegment(val other: Player, private val newPlayer: Boolean
                 }
 
                 if (!transmog) {
-                    val animations = intArrayOf(808, 823, 819, 820, 821, 822, 824)
+                    val animations = other.anims
 
                     val weapon = other.equipment[3] // Assume slot 3 is the weapon.
                     if (weapon != null) {
