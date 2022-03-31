@@ -7,15 +7,15 @@ val SKULL_SHORT_DURATION = 500
 val SKULL_LONG_DURATION = 2000
 
 arrayOf(Npcs.EMBLEM_TRADER, Npcs.EMBLEM_TRADER_316).forEach { npc ->
-    on_npc_option(npc = npc, option = "talk-to") {
+    onNpcOption(npc = npc, option = "talk-to") {
         player.queue { chat(this) }
     }
 
-    on_npc_option(npc = npc, option = "trade") {
+    onNpcOption(npc = npc, option = "trade") {
         open_bounty_store(player)
     }
 
-    on_npc_option(npc = npc, option = "skull") {
+    onNpcOption(npc = npc, option = "skull") {
         player.queue {
             if (player.hasSkullIcon(SkullIcon.NONE)) {
                 give_pk_skull(this)
@@ -26,7 +26,7 @@ arrayOf(Npcs.EMBLEM_TRADER, Npcs.EMBLEM_TRADER_316).forEach { npc ->
     }
 
     if (npc == Npcs.EMBLEM_TRADER) {
-        on_npc_option(npc = npc, option = "hide-streaks") {
+        onNpcOption(npc = npc, option = "hide-streaks") {
             player.queue {
                 if (options("Yes", "No", title = "Hide kill streak data?") == 1) {
                     hide_killstreak_data(player)
@@ -35,7 +35,7 @@ arrayOf(Npcs.EMBLEM_TRADER, Npcs.EMBLEM_TRADER_316).forEach { npc ->
             }
         }
     } else if (npc == Npcs.EMBLEM_TRADER_316) {
-        on_npc_option(npc = npc, option = "show-streaks") {
+        onNpcOption(npc = npc, option = "show-streaks") {
             player.queue {
                 if (options("Yes", "No", title = "Show kill streak data?") == 1) {
                     show_killstreak_data(player)

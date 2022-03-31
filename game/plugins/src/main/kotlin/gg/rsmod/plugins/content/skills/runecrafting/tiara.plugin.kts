@@ -7,8 +7,8 @@ Tiara.values.forEach { tiara ->
     val altarObj = altar.altar
 
     talisman?.let {
-        on_item_on_obj(obj = altarObj, item = Items.TIARA) { createTiara(player, it, tiara) }
-        on_item_on_obj(obj = altarObj, item = talisman) { createTiara(player, it, tiara) }
+        onItemOnObj(obj = altarObj, item = Items.TIARA) { createTiara(player, it, tiara) }
+        onItemOnObj(obj = altarObj, item = talisman) { createTiara(player, it, tiara) }
     }
 }
 

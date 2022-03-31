@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.areas.edgeville.chat
 
-on_npc_option(npc = Npcs.LESSER_FANATIC, option = "talk-to") {
+onNpcOption(npc = Npcs.LESSER_FANATIC, option = "talk-to") {
     player.queue { chat(this) }
 }
 

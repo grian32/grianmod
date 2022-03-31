@@ -14,7 +14,7 @@ MagicSpells.getCombatSpells().forEach { entry ->
     val ancients = requirement.spellbook == Spellbook.ANCIENT.id
 
     if (standard || ancients) {
-        on_spell_on_npc(requirement.interfaceId, requirement.component) {
+        onSpellOnNpc(requirement.interfaceId, requirement.component) {
             val npc = player.getInteractingNpc()
             val combatSpell = CombatSpell.values.firstOrNull { spell -> spell.id == requirement.paramItem }
             if (combatSpell != null) {

@@ -13,7 +13,7 @@ val HIDES = listOf(
     TannableHide(Items.BLACK_DRAGONHIDE, Items.BLACK_DRAGON_LEATHER, "Black d'hide", 20)
 )
 
-on_interface_open(TANNING_INTERFACE) {
+onInterfaceOpen(TANNING_INTERFACE) {
     HIDES.forEachIndexed { index, hide ->
         player.setComponentItem(TANNING_INTERFACE, 100 + index, hide.id, 250)
         player.setComponentText(TANNING_INTERFACE, 108 + index, hide.name)
@@ -29,22 +29,22 @@ on_interface_open(TANNING_INTERFACE) {
 }
 
 HIDES.forEachIndexed { index, hide ->
-    on_op_model(TANNING_INTERFACE, 148 + index) {
+    onOpModel(TANNING_INTERFACE, 148 + index) {
         tanHide(hide, player, 1)
     }
 
-    on_op_model(TANNING_INTERFACE, 140 + index) {
+    onOpModel(TANNING_INTERFACE, 140 + index) {
         tanHide(hide, player, 5)
     }
 
-    on_op_model(TANNING_INTERFACE, 132 + index) {
+    onOpModel(TANNING_INTERFACE, 132 + index) {
         player.queue {
             val amount = inputInt("Enter amount:")
             tanHide(hide, player, amount)
         }
     }
 
-    on_op_model(TANNING_INTERFACE, 124 + index) {
+    onOpModel(TANNING_INTERFACE, 124 + index) {
         tanHide(hide, player, 28)
     }
 }

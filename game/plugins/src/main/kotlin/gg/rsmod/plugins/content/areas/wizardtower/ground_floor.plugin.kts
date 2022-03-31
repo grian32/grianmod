@@ -7,7 +7,7 @@ val MESSAGES = listOf(
     "So you think you're a Mage? Volume 28"
 )
 
-on_obj_option(Objs.BOOKCASE_12539, "search") {
+onObjOption(Objs.BOOKCASE_12539, "search") {
     player.queue {
         this.messageBox("There's a large selection of books, the majority of which look fairly old. Some very strange names... You pick one at random :")
         this.messageBox("'${MESSAGES.random()}'")
@@ -16,9 +16,9 @@ on_obj_option(Objs.BOOKCASE_12539, "search") {
 }
 
 
-spawn_npc(Npcs.PROFESSOR_ONGLEWIP, 3112, 3158, 0, 5)
+spawnNpc(Npcs.PROFESSOR_ONGLEWIP, 3112, 3158, 0, 5)
 
-on_npc_option(Npcs.PROFESSOR_ONGLEWIP, "talk-to") {
+onNpcOption(Npcs.PROFESSOR_ONGLEWIP, "talk-to") {
     player.queue {
         chatPlayer("Do you live here too?", title = player.username)
         chatNpc(
@@ -41,7 +41,7 @@ on_npc_option(Npcs.PROFESSOR_ONGLEWIP, "talk-to") {
     }
 }
 
-spawn_item(Items.LEATHER_BOOTS, 1, 3111, 3159)
+spawnItem(Items.LEATHER_BOOTS, 1, 3111, 3159)
 listOf(Pair(3106, 3160), Pair(3106, 3159), Pair(3105, 3159)).forEach {
-    spawn_item(Items.LOGS, 1, it.first, it.second)
+    spawnItem(Items.LOGS, 1, it.first, it.second)
 }

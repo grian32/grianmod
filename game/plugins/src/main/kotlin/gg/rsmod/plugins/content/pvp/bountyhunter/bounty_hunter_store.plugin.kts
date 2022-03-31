@@ -61,16 +61,16 @@ val ITEM_PRICES = hashMapOf(
         Items.HUNTERS_HONOUR to 2_500_000
 )
 
-on_interface_open(interfaceId = STORE_INTERFACE_ID) {
+onInterfaceOpen(interfaceId = STORE_INTERFACE_ID) {
     player.setInterfaceEvents(interfaceId = STORE_INTERFACE_ID, component = 2, range = 0..50, setting = 1086)
     player.runClientScript(23, 11665410, 11665411, 878)
 }
 
-on_button(interfaceId = STORE_INTERFACE_ID, component = 2) {
+onButton(interfaceId = STORE_INTERFACE_ID, component = 2) {
     val item = player.getInteractingItemId()
     val opt = player.getInteractingOption()
 
-    val price = ITEM_PRICES[item] ?: return@on_button
+    val price = ITEM_PRICES[item] ?: return@onButton
 
     when (opt) {
         1 -> player.message("${Item(item).getName(world.definitions)} costs ${DecimalFormat().format(price)} points.")
@@ -79,7 +79,7 @@ on_button(interfaceId = STORE_INTERFACE_ID, component = 2) {
         4 -> buy_item(player, item, 10)
         5 -> buy_item(player, item, 50)
         10 -> world.sendExamine(player, item, ExamineEntityType.ITEM)
-        else -> return@on_button
+        else -> return@onButton
     }
 }
 

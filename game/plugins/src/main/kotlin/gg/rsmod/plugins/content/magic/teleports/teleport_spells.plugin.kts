@@ -14,7 +14,7 @@ TeleportSpell.values.forEach { teleport ->
         }
     } else {
         val metadata = MagicSpells.getMetadata(teleport.paramItem)!!
-        on_button(metadata.interfaceId, metadata.component) {
+        onButton(metadata.interfaceId, metadata.component) {
             player.teleport(teleport, metadata)
         }
     }

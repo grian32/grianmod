@@ -6,7 +6,7 @@ import gg.rsmod.game.model.attr.OTHER_ITEM_SLOT_ATTR
 /**
  * Closing main modal for players.
  */
-set_modal_close_logic {
+setModalCloseLogic {
     val modal = player.interfaces.getModal()
     if (modal != -1) {
         player.closeInterface(modal)
@@ -17,14 +17,14 @@ set_modal_close_logic {
 /**
  * Check if the player has a menu opened.
  */
-set_menu_open_check {
+setMenuOpenCheck {
     player.getInterfaceAt(dest = InterfaceDestination.MAIN_SCREEN) != -1
 }
 
 /**
  * Execute when a player logs in.
  */
-on_login {
+onLogin {
     // Skill-related logic.
     if (player.getSkills().getMaxLevel(Skills.HITPOINTS) < 10) {
         player.getSkills().setBaseLevel(Skills.HITPOINTS, 10)
@@ -71,7 +71,7 @@ on_login {
 /**
  * Logic for swapping items in inventory.
  */
-on_component_item_swap(interfaceId = 149, component = 0) {
+onComponentItemSwap(interfaceId = 149, component = 0) {
     val srcSlot = player.attr[INTERACTING_ITEM_SLOT]!!
     val dstSlot = player.attr[OTHER_ITEM_SLOT_ATTR]!!
 

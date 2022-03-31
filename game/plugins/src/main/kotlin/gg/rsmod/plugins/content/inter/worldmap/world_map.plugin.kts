@@ -1,8 +1,8 @@
 package gg.rsmod.plugins.content.inter.worldmap
 
-on_button(interfaceId = 160, component = 43) {
+onButton(interfaceId = 160, component = 43) {
     if (!player.lock.canInterfaceInteract()) {
-        return@on_button
+        return@onButton
     }
 
     if (!player.isInterfaceVisible(WorldMap.INTERFACE_ID)) {
@@ -19,14 +19,14 @@ on_button(interfaceId = 160, component = 43) {
     }
 }
 
-on_button(interfaceId = WorldMap.INTERFACE_ID, component = 37) {
+onButton(interfaceId = WorldMap.INTERFACE_ID, component = 37) {
     player.closeInterface(WorldMap.INTERFACE_ID)
     player.openOverlayInterface(player.interfaces.displayMode)
     player.attr.remove(WorldMap.LAST_TILE)
     player.timers.remove(WorldMap.UPDATE_TIMER)
 }
 
-on_timer(WorldMap.UPDATE_TIMER) {
+onTimer(WorldMap.UPDATE_TIMER) {
     if (player.isInterfaceVisible(WorldMap.INTERFACE_ID)) {
         /*
          * Only send the world when the last tile recorded is not the same as

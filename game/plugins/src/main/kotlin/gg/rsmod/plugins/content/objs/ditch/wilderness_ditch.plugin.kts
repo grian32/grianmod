@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.objs.ditch
 
-on_obj_option(23271, "cross") {
+onObjOption(23271, "cross") {
     val ditch = player.getInteractingGameObj()
     val sideCross = player.tile.z == ditch.tile.z
 

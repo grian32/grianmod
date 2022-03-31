@@ -14,14 +14,14 @@ Altar.values.forEach { altar ->
 
         // Allow using the talisman on the ruins to enter the altar
         altar.talisman?.let { talisman ->
-            on_item_on_obj(obj = ruin, item = talisman) {
+            onItemOnObj(obj = ruin, item = talisman) {
                 altar.entrance?.let { player.moveTo(it) }
             }
         }
 
         // If the object has the 'enter' option, we should check that the varbit is set for the player before teleporting them to the altar
         if (def.options.contains(enterOption)) {
-            on_obj_option(obj = ruin, option = enterOption) {
+            onObjOption(obj = ruin, option = enterOption) {
                 if (player.getVarbit(altar.varbit) == 1) {
                     altar.entrance?.let { player.moveTo(it) }
                 }
@@ -34,7 +34,7 @@ Altar.values.forEach { altar ->
      * the respective tiara
      */
     if (altar.tiara != null) {
-        on_item_equip(item = altar.tiara) {
+        onItemEquip(item = altar.tiara) {
             player.setVarbit(altar.varbit, 1)
         }
     }
@@ -44,7 +44,7 @@ Altar.values.forEach { altar ->
      * the respective tiara
      */
     if (altar.tiara != null) {
-        on_item_unequip(item = altar.tiara) {
+        onItemUnequip(item = altar.tiara) {
             player.setVarbit(altar.varbit, 0)
         }
     }
@@ -52,7 +52,7 @@ Altar.values.forEach { altar ->
     /**
      * Handle the crafting action
      */
-    on_obj_option(obj = altar.altar, option = altar.option) {
+    onObjOption(obj = altar.altar, option = altar.option) {
         player.queue {
             RunecraftAction.craftRune(this, altar.rune)
         }
@@ -62,7 +62,7 @@ Altar.values.forEach { altar ->
      * Handle the exit portal for the altar
      */
     if (altar.exitPortal != null && altar.exit != null) {
-        on_obj_option(obj = altar.exitPortal, option = "use") {
+        onObjOption(obj = altar.exitPortal, option = "use") {
             player.moveTo(altar.exit)
         }
     }
@@ -71,7 +71,7 @@ Altar.values.forEach { altar ->
      * Handle the locate option on a talisman
      */
     altar.talisman?.let {
-        on_item_option(item = it, option = "locate") {
+        onItemOption(item = it, option = "locate") {
 
             // The tile of the ruins
             val tile = altar.exit!!

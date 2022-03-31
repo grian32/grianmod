@@ -135,7 +135,7 @@ object MagicSpells {
         // is not found in cache.
         val spell = metadata.values.first { it.name == name }
 
-        on_button(spell.interfaceId, spell.component) {
+        onButton(spell.interfaceId, spell.component) {
             plugin(this, spell)
         }
     }

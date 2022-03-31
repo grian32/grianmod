@@ -4,7 +4,6 @@ import gg.rsmod.game.model.attr.NO_CLIP_ATTR
 import gg.rsmod.game.model.bits.INFINITE_VARS_STORAGE
 import gg.rsmod.game.model.bits.InfiniteVarsType
 import gg.rsmod.game.model.combat.CombatClass
-import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.plugins.content.combat.CombatConfigs
 import gg.rsmod.plugins.content.combat.formula.MagicCombatFormula
 import gg.rsmod.plugins.content.combat.formula.MeleeCombatFormula
@@ -14,7 +13,7 @@ import gg.rsmod.plugins.content.inter.bank.openBank
 import gg.rsmod.plugins.content.magic.MagicSpells
 import java.text.DecimalFormat
 
-on_command("max") {
+onCommand("max") {
     val target = player.getCombatTarget() ?: player
     CombatClass.values.forEach { combatClass ->
         val max: Int
@@ -40,11 +39,11 @@ on_command("max") {
     }
 }
 
-on_command("empty") {
+onCommand("empty") {
     player.inventory.removeAll()
 }
 
-on_command("reboot", Privilege.ADMIN_POWER) {
+onCommand("reboot") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::reboot 500</col>") { values ->
         val cycles = values[0].toInt()
@@ -53,22 +52,22 @@ on_command("reboot", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("home", Privilege.ADMIN_POWER) {
+onCommand("home") {
     val home = world.gameContext.home
     player.moveTo(home)
 }
 
-on_command("obank", Privilege.ADMIN_POWER) {
+onCommand("obank") {
     player.openBank()
 }
 
-on_command("noclip", Privilege.ADMIN_POWER) {
+onCommand("noclip") {
     val noClip = !(player.attr[NO_CLIP_ATTR] ?: false)
     player.attr[NO_CLIP_ATTR] = noClip
     player.message("No-clip: ${if (noClip) "<col=178000>enabled</col>" else "<col=801700>disabled</col>"}")
 }
 
-on_command("mypos", Privilege.ADMIN_POWER) {
+onCommand("mypos") {
     val instancedMap = world.instanceAllocator.getMap(player.tile)
     val tile = player.tile
     if (instancedMap == null) {
@@ -79,7 +78,7 @@ on_command("mypos", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("tele", Privilege.ADMIN_POWER) {
+onCommand("tele") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::tele 3200 3200</col>") { values ->
         val x = values[0].toInt()
@@ -89,7 +88,7 @@ on_command("tele", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("teler", Privilege.ADMIN_POWER) {
+onCommand("teler") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::teler 12850</col>") { values ->
         val region = values[0].toInt()
@@ -98,7 +97,7 @@ on_command("teler", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("anim", Privilege.ADMIN_POWER) {
+onCommand("anim") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::anim 1</col>") { values ->
         val id = values[0].toInt()
@@ -107,7 +106,7 @@ on_command("anim", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("gfx", Privilege.ADMIN_POWER) {
+onCommand("gfx") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::gfx 1</col>") { values ->
         val id = values[0].toInt()
@@ -117,7 +116,7 @@ on_command("gfx", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("sound", Privilege.ADMIN_POWER) {
+onCommand("sound") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::sound 1</col>") { values ->
         val id = values[0].toInt()
@@ -126,7 +125,7 @@ on_command("sound", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("song", Privilege.ADMIN_POWER) {
+onCommand("song") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::song 1</col>") { values ->
         val id = values[0].toInt()
@@ -135,32 +134,32 @@ on_command("song", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("infrun", Privilege.ADMIN_POWER) {
+onCommand("infrun") {
     player.toggleStorageBit(INFINITE_VARS_STORAGE, InfiniteVarsType.RUN)
     player.message("Infinite run: ${if (!player.hasStorageBit(INFINITE_VARS_STORAGE, InfiniteVarsType.RUN)) "<col=801700>disabled</col>" else "<col=178000>enabled</col>"}")
 }
 
-on_command("infpray", Privilege.ADMIN_POWER) {
+onCommand("infpray") {
     player.toggleStorageBit(INFINITE_VARS_STORAGE, InfiniteVarsType.PRAY)
     player.message("Infinite prayer: ${if (!player.hasStorageBit(INFINITE_VARS_STORAGE, InfiniteVarsType.PRAY)) "<col=801700>disabled</col>" else "<col=178000>enabled</col>"}")
 }
 
-on_command("infhp", Privilege.ADMIN_POWER) {
+onCommand("infhp") {
     player.toggleStorageBit(INFINITE_VARS_STORAGE, InfiniteVarsType.HP)
     player.message("Infinite hp: ${if (!player.hasStorageBit(INFINITE_VARS_STORAGE, InfiniteVarsType.HP)) "<col=801700>disabled</col>" else "<col=178000>enabled</col>"}")
 }
 
-on_command("infrunes", Privilege.ADMIN_POWER) {
+onCommand("infrunes") {
     player.toggleVarbit(MagicSpells.INF_RUNES_VARBIT)
     player.message("Infinite runes: ${if (player.getVarbit(MagicSpells.INF_RUNES_VARBIT) != 1) "<col=801700>disabled</col>" else "<col=178000>enabled</col>"}")
 }
 
-on_command("invisible", Privilege.ADMIN_POWER) {
+onCommand("invisible") {
     player.invisible = !player.invisible
     player.message("Invisible: ${if (!player.invisible) "<col=801700>false</col>" else "<col=178000>true</col>"}")
 }
 
-on_command("npc", Privilege.ADMIN_POWER) {
+onCommand("npc") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::npc 1</col>") { values ->
         val id = values[0].toInt()
@@ -169,7 +168,7 @@ on_command("npc", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("obj", Privilege.ADMIN_POWER) {
+onCommand("obj") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::obj 1</col>") { values ->
         val id = values[0].toInt()
@@ -180,7 +179,7 @@ on_command("obj", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("removeobj", Privilege.ADMIN_POWER) {
+onCommand("removeobj") {
     val chunk = world.chunks.getOrCreate(player.tile)
     val obj = chunk.getEntities<GameObject>(player.tile, EntityType.STATIC_OBJECT, EntityType.DYNAMIC_OBJECT).firstOrNull()
     if (obj != null) {
@@ -190,21 +189,21 @@ on_command("removeobj", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("master", Privilege.ADMIN_POWER) {
+onCommand("master") {
     for (i in 0 until player.getSkills().maxSkills) {
         player.getSkills().setBaseLevel(i, 99)
     }
     player.calculateAndSetCombatLevel()
 }
 
-on_command("reset", Privilege.ADMIN_POWER) {
+onCommand("reset") {
     for (i in 0 until player.getSkills().maxSkills) {
         player.getSkills().setBaseLevel(i, if (i == Skills.HITPOINTS) 10 else 1)
     }
     player.calculateAndSetCombatLevel()
 }
 
-on_command("setlvl", Privilege.ADMIN_POWER) {
+onCommand("setlvl") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::setlvl 0 99</col> or <col=801700>::setlvl attack 99</col>") { values ->
         var skill: Int
@@ -236,7 +235,7 @@ on_command("setlvl", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("item", Privilege.ADMIN_POWER) {
+onCommand("item") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::item 4151 1</col> or <col=801700>::item 4151</col>") { values ->
         val item = values[0].toInt()
@@ -251,11 +250,11 @@ on_command("item", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("food", Privilege.ADMIN_POWER) {
+onCommand("food") {
     player.inventory.add(item = Items.MANTA_RAY, amount = player.inventory.freeSlotCount)
 }
 
-on_command("varp", Privilege.ADMIN_POWER) {
+onCommand("varp") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::varp 173 1</col>") { values ->
         val varp = values[0].toInt()
@@ -266,7 +265,7 @@ on_command("varp", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("varbit", Privilege.ADMIN_POWER) {
+onCommand("varbit") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::varbit 5451 1</col>") { values ->
         val varbit = values[0].toInt()
@@ -277,7 +276,7 @@ on_command("varbit", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("getvarbit", Privilege.ADMIN_POWER) {
+onCommand("getvarbit") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::getvarbit 5451</col>") { values ->
         val varbit = values[0].toInt()
@@ -286,7 +285,7 @@ on_command("getvarbit", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("getvarbits", Privilege.ADMIN_POWER) {
+onCommand("getvarbits") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::getvarbits 83</col>") { values ->
         val varp = values[0].toInt()
@@ -305,7 +304,7 @@ on_command("getvarbits", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("interface", Privilege.ADMIN_POWER) {
+onCommand("interface") {
     val args = player.getCommandArgs()
     tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::interface 214</col>") { values ->
         val component = values[0].toInt()
@@ -314,7 +313,7 @@ on_command("interface", Privilege.ADMIN_POWER) {
     }
 }
 
-on_command("clip", Privilege.ADMIN_POWER) {
+onCommand("clip") {
     val chunk = world.chunks.getOrCreate(player.tile)
     val matrix = chunk.getMatrix(player.tile.height)
     val lx = player.tile.x % 8

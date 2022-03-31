@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.areas.edgeville.chat
 
-on_npc_option(Npcs.AVA, "talk-to") {
+onNpcOption(Npcs.AVA, "talk-to") {
     player.queue {
         chatNpc("Would you like to buy an Ava's Accumulator for 25,000 coins?", Npcs.AVA, title = "Ava")
         val option = options(

@@ -2,7 +2,7 @@ package gg.rsmod.plugins.content.items.prayerscrolls
 
 import gg.rsmod.plugins.content.mechanics.prayer.Prayers
 
-on_item_option(Items.DEXTEROUS_PRAYER_SCROLL, "read") {
+onItemOption(Items.DEXTEROUS_PRAYER_SCROLL, "read") {
     player.queue {
         if (player.getVarbit(Prayers.RIGOUR_UNLOCK_VARBIT) == 1) {
             messageBox("You can make out some faded words on the ancient parchment. It appears to be an archaic invocation of the gods. However there's nothing more for you to learn.")
@@ -26,7 +26,7 @@ on_item_option(Items.DEXTEROUS_PRAYER_SCROLL, "read") {
     }
 }
 
-on_item_option(Items.ARCANE_PRAYER_SCROLL, "read") {
+onItemOption(Items.ARCANE_PRAYER_SCROLL, "read") {
     player.queue {
         if (player.getVarbit(Prayers.AUGURY_UNLOCK_VARBIT) == 1) {
             messageBox("You can make out some faded words on the ancient parchment. It appears to be an archaic invocation of the gods. However there's nothing more for you to learn.")
@@ -50,7 +50,7 @@ on_item_option(Items.ARCANE_PRAYER_SCROLL, "read") {
     }
 }
 
-on_item_option(Items.TORN_PRAYER_SCROLL, "read") {
+onItemOption(Items.TORN_PRAYER_SCROLL, "read") {
     player.queue {
         if (player.getVarbit(Prayers.PRESERVE_UNLOCK_VARBIT) == 1) {
             messageBox("You can make out some faded words on the ancient parchment. It appears to be an archaic invocation of the gods. However there's nothing more for you to learn.")

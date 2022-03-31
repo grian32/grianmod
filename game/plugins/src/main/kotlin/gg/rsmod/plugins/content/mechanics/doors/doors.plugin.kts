@@ -38,12 +38,12 @@ load_metadata {
     )
 }
 
-load_service(DoorService())
+loadService(DoorService())
 
-on_world_init {
+onWorldInit {
     world.getService(DoorService::class.java)!!.let { service ->
         service.doors.forEach { door ->
-            on_obj_option(obj = door.opened, option = "close") {
+            onObjOption(obj = door.opened, option = "close") {
                 val obj = player.getInteractingGameObj()
                 if (!is_stuck(world, obj)) {
                     val newDoor = world.closeDoor(obj, closed = door.closed, invertTransform = obj.type == ObjectType.DIAGONAL_WALL.value)
@@ -56,7 +56,7 @@ on_world_init {
                 }
             }
 
-            on_obj_option(obj = door.closed, option = "open") {
+            onObjOption(obj = door.closed, option = "open") {
                 val obj = player.getInteractingGameObj()
                 val newDoor = world.openDoor(obj, opened = door.opened, invertTransform = obj.type == ObjectType.DIAGONAL_WALL.value)
                 copy_stick_vars(obj, newDoor)
@@ -66,19 +66,19 @@ on_world_init {
         }
 
         service.doubleDoors.forEach { doors ->
-            on_obj_option(obj = doors.closed.left, option = "open") {
+            onObjOption(obj = doors.closed.left, option = "open") {
                 handle_double_doors(player, player.getInteractingGameObj(), doors, open = true)
             }
 
-            on_obj_option(obj = doors.closed.right, option = "open") {
+            onObjOption(obj = doors.closed.right, option = "open") {
                 handle_double_doors(player, player.getInteractingGameObj(), doors, open = true)
             }
 
-            on_obj_option(obj = doors.opened.left, option = "close") {
+            onObjOption(obj = doors.opened.left, option = "close") {
                 handle_double_doors(player, player.getInteractingGameObj(), doors, open = false)
             }
 
-            on_obj_option(obj = doors.opened.right, option = "close") {
+            onObjOption(obj = doors.opened.right, option = "close") {
                 handle_double_doors(player, player.getInteractingGameObj(), doors, open = false)
             }
         }

@@ -58,13 +58,13 @@ private val standardAnvils = setOf(
 standardAnvils.forEach { anvil ->
 
     // Bind the usage of a hammer on an anvil
-    on_item_on_obj(obj = anvil, item = Items.HAMMER) {
+    onItemOnObj(obj = anvil, item = Items.HAMMER) {
         player.message("To smith a metal bar, you can click on the anvil while you have the bar in your inventory.")
     }
 
     // Bind the usage of a bar on anvil
     barIds.forEach { bar ->
-        on_item_on_obj(obj = anvil, item = bar) {
+        onItemOnObj(obj = anvil, item = bar) {
 
             // The definition of the bar
             val def = barDefs[bar]
@@ -82,7 +82,7 @@ standardAnvils.forEach { anvil ->
     }
 
     // Bind the "smith" action on an anvil
-    on_obj_option(obj = anvil, option = "smith") {
+    onObjOption(obj = anvil, option = "smith") {
 
         // The bar to smith
         val bar = getBar(player)
@@ -136,11 +136,11 @@ fun openSmithingInterface(player: Player, bar: Bar) {
  * Listen on the child components for the smithing interface
  */
 smithingInterfaceComponents.forEach { child ->
-    on_button(interfaceId = smithingInterface, component = child) {
+    onButton(interfaceId = smithingInterface, component = child) {
 
         // The bar being smithed
         val barId = smithingData.smithableBarsEnum.getInt(player.getVarbit(smithingCurrentBarVarbit))
-        val bar = barDefs[barId] ?: return@on_button
+        val bar = barDefs[barId] ?: return@onButton
 
         // If the cache contains an entry for this child
         val barItems = itemCache.getOrPut(bar) { HashMap() }

@@ -23,10 +23,10 @@ import gg.rsmod.plugins.api.PluginMetadataBuilder
  * fun getMyProperty(): Int = getProperty<Int>("my_property") // Will return value 50
  * ```
  */
-fun KotlinPlugin.load_metadata(init: PluginMetadataDsl.Builder.() -> Unit) {
+fun KotlinPlugin.loadMetadata(init: PluginMetadataDsl.Builder.() -> Unit) {
     val builder = PluginMetadataDsl.Builder()
     init(builder)
-    load_metadata(builder.build())
+    _loadMetadata(builder.build())
 }
 
 object PluginMetadataDsl {

@@ -5,7 +5,7 @@ private val CRATES = setOf(
         Objs.CRATE_358, Objs.CRATE_366, Objs.CRATE_1990, Objs.CRATE_1999, Objs.CRATE_2064)
 
 CRATES.forEach { crate ->
-    on_obj_option(obj = crate, option = "search") {
+    onObjOption(obj = crate, option = "search") {
         player.message("You search the crate but find nothing.")
     }
 }

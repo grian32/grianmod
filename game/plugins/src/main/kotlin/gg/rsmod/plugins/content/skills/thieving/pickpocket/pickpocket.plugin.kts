@@ -8,7 +8,7 @@ private val GLOVES_OF_SILENCE_BONUS = 5
 
 PickpocketNpc.values.forEach { pickpocketNpc ->
     pickpocketNpc.npcIds.forEach { npcId ->
-        on_npc_option(npc = npcId, option = "pickpocket") {
+        onNpcOption(npc = npcId, option = "pickpocket") {
             player.queue {
                 pickpocket(npcId, pickpocketNpc)
             }

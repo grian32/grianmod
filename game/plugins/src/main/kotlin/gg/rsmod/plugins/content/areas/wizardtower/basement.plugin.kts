@@ -5,10 +5,10 @@ import gg.rsmod.plugins.content.magic.teleport
 
 // TODO: figure out why rune essence mine loc isnt same as osrs =[
 
-spawn_npc(Npcs.CHICKEN_1173, 3109, 9568, walkRadius = 3)
-spawn_npc(Npcs.SEDRIDOR, 3102, 9570, walkRadius = 5)
+spawnNpc(Npcs.CHICKEN_1173, 3109, 9568, walkRadius = 3)
+spawnNpc(Npcs.SEDRIDOR, 3102, 9570, walkRadius = 5)
 
-on_npc_option(Npcs.SEDRIDOR, "talk-to") {
+onNpcOption(Npcs.SEDRIDOR, "talk-to") {
     player.queue {
         chatNpc(
             "Welcome adventurer, to the world renowned Wizards' Tower. How may I help you?",
@@ -44,12 +44,12 @@ on_npc_option(Npcs.SEDRIDOR, "talk-to") {
     }
 }
 
-on_npc_option(Npcs.SEDRIDOR, "teleport") {
+onNpcOption(Npcs.SEDRIDOR, "teleport") {
     runeEssenceTeleport(player)
 }
 
 listOf(381, 380).forEach {
-    on_obj_option(it, "search") {
+    onObjOption(it, "search") {
         player.message(
             listOf(
                 "You find nothing to interest you.",

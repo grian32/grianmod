@@ -4,7 +4,7 @@ private val HAY_OBJECTS = setOf(
         Objs.HAYSTACK, Objs.HAY_BALES, Objs.HAY_BALES_299)
 
 HAY_OBJECTS.forEach { hay ->
-    on_obj_option(obj = hay, option = "search") {
+    onObjOption(obj = hay, option = "search") {
         val obj = player.getInteractingGameObj()
         val name = obj.getDef(world.definitions).name
         player.queue {

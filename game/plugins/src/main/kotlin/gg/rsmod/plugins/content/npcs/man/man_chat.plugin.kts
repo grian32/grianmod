@@ -6,7 +6,7 @@ val MEN = arrayOf(Npcs.MAN_3014, Npcs.MAN_3078, Npcs.MAN_3079, Npcs.MAN_3080,
         Npcs.MAN_7281)
 
 MEN.forEach { man ->
-    on_npc_option(npc = man, option = "talk-to") {
+    onNpcOption(npc = man, option = "talk-to") {
         player.queue { chat(this) }
     }
 }

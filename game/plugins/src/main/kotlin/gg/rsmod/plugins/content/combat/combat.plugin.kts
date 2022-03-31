@@ -10,7 +10,7 @@ import gg.rsmod.plugins.content.combat.specialattack.SpecialAttacks
 import gg.rsmod.plugins.content.combat.strategy.magic.CombatSpell
 import gg.rsmod.plugins.content.inter.attack.AttackTab
 
-set_combat_logic {
+setCombatLogic {
     pawn.attr[COMBAT_TARGET_FOCUS_ATTR]?.get()?.let { target ->
         pawn.facePawn(target)
     }
@@ -25,8 +25,8 @@ set_combat_logic {
     }
 }
 
-on_player_option("Attack") {
-    val target = pawn.attr[INTERACTING_PLAYER_ATTR]?.get() ?: return@on_player_option
+onPlayerOption("Attack") {
+    val target = pawn.attr[INTERACTING_PLAYER_ATTR]?.get() ?: return@onPlayerOption
     player.attack(target)
 }
 

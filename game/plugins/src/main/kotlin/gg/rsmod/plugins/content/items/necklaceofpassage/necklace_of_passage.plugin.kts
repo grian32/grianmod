@@ -23,7 +23,7 @@ private val LOCATIONS = mapOf(
 // TODO: chat messages for degrading in general
 NECKLACES.forEach { necklace ->
     LOCATIONS.forEach { (name, tile) ->
-        on_equipment_option(necklace, name) {
+        onEquipmentOption(necklace, name) {
             world.spawn(AreaSound(player.tile, 200, 5, 1))
             player.teleport(tile, TeleportType.MODERN)
             when (player.equipment[2]?.id) {
@@ -37,7 +37,7 @@ NECKLACES.forEach { necklace ->
         }
     }
 
-    on_item_option(necklace, "rub") {
+    onItemOption(necklace, "rub") {
         player.queue {
             val option = options(
                 "Wizards' Tower",

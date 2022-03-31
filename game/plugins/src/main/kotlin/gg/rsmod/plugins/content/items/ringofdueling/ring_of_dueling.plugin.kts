@@ -22,7 +22,7 @@ private val LOCATIONS = mapOf(
 
 RING_OF_DUELING.forEach { duel ->
     LOCATIONS.forEach { location, endTile ->
-        on_equipment_option(duel, option = location) {
+        onEquipmentOption(duel, option = location) {
             player.queue(TaskPriority.STRONG) {
                 player.teleport(endTile)
             }

@@ -3,7 +3,7 @@ package gg.rsmod.plugins.content.inter.xpdrops
 val INTERFACE_ID = 122
 val SETUP_INTERFACE_ID = 137
 
-on_button(interfaceId = 160, component = 1) {
+onButton(interfaceId = 160, component = 1) {
     val option = player.getInteractingOption()
 
     if (option == 1) {

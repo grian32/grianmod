@@ -3,14 +3,14 @@ package gg.rsmod.plugins.content.npcs.sheep
 Sheep.SHEEP_NPCS.forEach { sheep ->
     if (world.definitions.get(NpcDef::class.java, sheep).options.contains("Shear")) {
 
-        on_npc_option(npc = sheep, option = "shear") {
+        onNpcOption(npc = sheep, option = "shear") {
             val npc = player.getInteractingNpc()
 
             player.resetFacePawn()
             player.faceTile(npc.tile)
             if (!player.inventory.contains(Items.SHEARS)) {
                 player.message("You need a set of shears to do this.")
-                return@on_npc_option
+                return@onNpcOption
             }
             player.queue { shear(this, player, npc) }
         }

@@ -23,7 +23,7 @@ private val LOCATIONS = mapOf(
 
 GLORY.forEach { glory ->
     LOCATIONS.forEach { location, tile ->
-        on_equipment_option(glory, option = location) {
+        onEquipmentOption(glory, option = location) {
             player.queue(TaskPriority.STRONG) {
                 player.teleport(tile)
             }

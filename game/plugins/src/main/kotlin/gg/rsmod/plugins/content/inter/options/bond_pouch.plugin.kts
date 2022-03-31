@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.inter.options
 
-on_button(interfaceId = OptionsTab.INTERFACE_ID, component = 100) {
+onButton(interfaceId = OptionsTab.INTERFACE_ID, component = 100) {
     /**
     [Varp (SHORT)]: id=1780, state=6
     [Varp (SHORT)]: id=1781, state=4
@@ -12,7 +12,7 @@ on_button(interfaceId = OptionsTab.INTERFACE_ID, component = 100) {
     [Invoke Script]: [733, 0, 0, 0, 0, 0, 0, 0, 0]
      */
     if (!player.lock.canInterfaceInteract()) {
-        return@on_button
+        return@onButton
     }
     player.setInterfaceUnderlay(color = -1, transparency = -1)
     player.openInterface(interfaceId = 65, dest = InterfaceDestination.MAIN_SCREEN)

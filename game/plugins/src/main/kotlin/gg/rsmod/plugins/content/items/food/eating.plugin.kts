@@ -1,9 +1,9 @@
 package gg.rsmod.plugins.content.items.food
 
 Food.values.forEach { food ->
-    on_item_option(item = food.item, option = "eat") {
+    onItemOption(item = food.item, option = "eat") {
         if (!Foods.canEat(player, food)) {
-            return@on_item_option
+            return@onItemOption
         }
 
         val inventorySlot = player.getInteractingItemSlot()

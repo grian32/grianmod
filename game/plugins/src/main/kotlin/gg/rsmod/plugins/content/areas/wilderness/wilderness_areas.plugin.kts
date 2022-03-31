@@ -11,11 +11,11 @@ val INTERFACE_ID = 90
  */
 val SKULL_CROSSOUT_COMPONENT = 57
 
-on_login {
+onLogin {
     player.timers[CHECK_TIMER] = 1
 }
 
-on_timer(CHECK_TIMER) {
+onTimer(CHECK_TIMER) {
     player.timers[CHECK_TIMER] = 1
 
     if (in_wilderness(player.tile)) {

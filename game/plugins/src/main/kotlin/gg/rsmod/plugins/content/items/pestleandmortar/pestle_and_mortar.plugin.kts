@@ -28,7 +28,7 @@ val SQIRK = listOf(
 )
 
 for (i in CRUSHABLE_ITEMS) {
-    on_item_on_item(Items.PESTLE_AND_MORTAR, i.item) {
+    onItemOnItem(Items.PESTLE_AND_MORTAR, i.item) {
         // always uses 1 so dont need to care about amount :msncool:
         if (player.inventory.remove(i.item, 1, true).hasSucceeded()) {
             player.inventory.add(i.crushedItem,1, true)
@@ -37,7 +37,7 @@ for (i in CRUSHABLE_ITEMS) {
 }
 
 for (i in SQIRK) {
-    on_item_on_item(Items.PESTLE_AND_MORTAR, i.item) {
+    onItemOnItem(Items.PESTLE_AND_MORTAR, i.item) {
         if (
             player.inventory.remove(i.item, i.amountNeeded, true).hasSucceeded() &&
             player.inventory.remove(Items.BEER_GLASS, 1, true).hasSucceeded()
@@ -47,7 +47,7 @@ for (i in SQIRK) {
     }
 }
 
-on_item_on_item(Items.PESTLE_AND_MORTAR, Items.BLACK_MUSHROOM) {
+onItemOnItem(Items.PESTLE_AND_MORTAR, Items.BLACK_MUSHROOM) {
     if (
         player.inventory.remove(Items.BLACK_MUSHROOM, 1, true).hasSucceeded() &&
         player.inventory.remove(Items.VIAL, 1, true).hasSucceeded()

@@ -3,7 +3,7 @@ package gg.rsmod.plugins.content.inter.equipstats
 import gg.rsmod.game.action.EquipAction
 
 fun bind_unequip(equipment: EquipmentType, component: Int) {
-    on_button(interfaceId = EquipmentStats.INTERFACE_ID, component = component) {
+    onButton(interfaceId = EquipmentStats.INTERFACE_ID, component = component) {
         val opt = player.getInteractingOption()
 
         if (opt == 1) {
@@ -11,10 +11,10 @@ fun bind_unequip(equipment: EquipmentType, component: Int) {
             player.calculateBonuses()
             EquipmentStats.sendBonuses(player)
         } else if (opt == 10) {
-            val item = player.equipment[equipment.id] ?: return@on_button
+            val item = player.equipment[equipment.id] ?: return@onButton
             world.sendExamine(player, item.id, ExamineEntityType.ITEM)
         } else {
-            val item = player.equipment[equipment.id] ?: return@on_button
+            val item = player.equipment[equipment.id] ?: return@onButton
             if (!world.plugins.executeItem(player, item.id, opt)) {
                 val slot = player.getInteractingSlot()
                 if (world.devContext.debugButtons) {
@@ -25,10 +25,10 @@ fun bind_unequip(equipment: EquipmentType, component: Int) {
     }
 }
 
-on_button(interfaceId = EquipmentStats.TAB_INTERFACE_ID, component = 0) {
+onButton(interfaceId = EquipmentStats.TAB_INTERFACE_ID, component = 0) {
     val slot = player.getInteractingSlot()
     val opt = player.getInteractingOption()
-    val item = player.inventory[slot] ?: return@on_button
+    val item = player.inventory[slot] ?: return@onButton
 
     if (opt == 1) {
         val result = EquipAction.equip(player, item, inventorySlot = slot)
@@ -43,9 +43,9 @@ on_button(interfaceId = EquipmentStats.TAB_INTERFACE_ID, component = 0) {
     }
 }
 
-on_button(interfaceId = 387, component = 17) {
+onButton(interfaceId = 387, component = 17) {
     if (!player.lock.canInterfaceInteract()) {
-        return@on_button
+        return@onButton
     }
 
     player.setInterfaceUnderlay(-1, -1)
@@ -57,7 +57,7 @@ on_button(interfaceId = 387, component = 17) {
     EquipmentStats.sendBonuses(player)
 }
 
-on_interface_close(interfaceId = EquipmentStats.INTERFACE_ID) {
+onInterfaceClose(interfaceId = EquipmentStats.INTERFACE_ID) {
     player.closeInterface(interfaceId = EquipmentStats.TAB_INTERFACE_ID)
 }
 

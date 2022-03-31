@@ -55,8 +55,8 @@ load_metadata {
     )
 }
 
-on_login {
-    val newAccount = player.attr[NEW_ACCOUNT_ATTR] ?: return@on_login
+onLogin {
+    val newAccount = player.attr[NEW_ACCOUNT_ATTR] ?: return@onLogin
     if (newAccount) {
         val inventory = player.getInventoryStarterItems()
         val bank = player.getBankStarterItems()

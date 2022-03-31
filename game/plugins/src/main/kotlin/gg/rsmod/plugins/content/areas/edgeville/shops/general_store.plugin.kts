@@ -2,7 +2,7 @@ package gg.rsmod.plugins.content.areas.edgeville.shops
 
 import gg.rsmod.plugins.content.mechanics.shops.CoinCurrency
 
-create_shop("Edgeville General Store", CoinCurrency()) {
+createShop("Edgeville General Store", CoinCurrency()) {
     items[0] = ShopItem(Items.POT, 5)
     items[1] = ShopItem(Items.JUG, 2)
     items[2] = ShopItem(Items.EMPTY_JUG_PACK, 5)

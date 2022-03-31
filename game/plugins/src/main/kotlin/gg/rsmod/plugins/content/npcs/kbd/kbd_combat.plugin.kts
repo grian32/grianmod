@@ -9,7 +9,7 @@ import gg.rsmod.plugins.content.combat.formula.MeleeCombatFormula
 import gg.rsmod.plugins.content.combat.strategy.RangedCombatStrategy
 import gg.rsmod.plugins.content.mechanics.poison.poison
 
-on_npc_combat(Npcs.KING_BLACK_DRAGON) {
+onNpcCombat(Npcs.KING_BLACK_DRAGON) {
     npc.queue {
         combat(this)
     }

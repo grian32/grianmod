@@ -5,7 +5,7 @@ import gg.rsmod.game.action.EquipAction
 val EQUIP_ITEM_SOUND = 2238
 
 fun bind_unequip(equipment: EquipmentType, child: Int) {
-    on_button(interfaceId = 387, component = child) {
+    onButton(interfaceId = 387, component = child) {
         val opt = player.getInteractingOption()
         when (opt) {
             1 -> {
@@ -15,11 +15,11 @@ fun bind_unequip(equipment: EquipmentType, child: Int) {
                 }
             }
             10 -> {
-                val item = player.equipment[equipment.id] ?: return@on_button
+                val item = player.equipment[equipment.id] ?: return@onButton
                 world.sendExamine(player, item.id, ExamineEntityType.ITEM)
             }
             else -> {
-                val item = player.equipment[equipment.id] ?: return@on_button
+                val item = player.equipment[equipment.id] ?: return@onButton
                 val menuOpt = opt - 1
                 if (!world.plugins.executeEquipmentOption(player, item.id, menuOpt) && world.devContext.debugItemActions) {
                     val action = item.getDef(world.definitions).equipmentMenu[menuOpt - 1]
@@ -31,7 +31,7 @@ fun bind_unequip(equipment: EquipmentType, child: Int) {
 }
 
 for (equipment in EquipmentType.values) {
-    on_equip_to_slot(equipment.id) {
+    onEquipToSlot(equipment.id) {
         player.playSound(EQUIP_ITEM_SOUND)
         if (equipment == EquipmentType.WEAPON) {
             player.sendWeaponComponentInformation()

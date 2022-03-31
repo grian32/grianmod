@@ -4,12 +4,12 @@ import gg.rsmod.game.model.attr.DISPLAY_MODE_CHANGE_ATTR
 import gg.rsmod.game.model.interf.DisplayMode
 
 fun bind_setting(child: Int, plugin: Plugin.() -> Unit) {
-    on_button(interfaceId = OptionsTab.INTERFACE_ID, component = child) {
+    onButton(interfaceId = OptionsTab.INTERFACE_ID, component = child) {
         plugin(this)
     }
 }
 
-on_login {
+onLogin {
     player.setInterfaceEvents(interfaceId = OptionsTab.INTERFACE_ID, component = 106, range = 1..4, setting = 2) // Player option priority
     player.setInterfaceEvents(interfaceId = OptionsTab.INTERFACE_ID, component = 107, range = 1..4, setting = 2) // Npc option priority
 }
@@ -17,7 +17,7 @@ on_login {
 /**
  * Toggle mouse scroll wheel zoom.
  */
-on_button(interfaceId = OptionsTab.INTERFACE_ID, component = 5) {
+onButton(interfaceId = OptionsTab.INTERFACE_ID, component = 5) {
     // TODO(Tom): figure out why this varbit isn't causing the cross to be drawn.
     // It technically works since it won't allow zooming with mouse wheel, but it
     // doesn't visually show on the interface.
@@ -39,7 +39,7 @@ for (offset in 0..3) {
 /**
  * Changing display modes (fixed, resizable).
  */
-set_window_status_logic {
+setWindowStatusLogic {
     val change = player.attr[DISPLAY_MODE_CHANGE_ATTR]
     val mode = when (change) {
         2 -> if (player.getVarbit(OSRSGameframe.SIDESTONES_ARRAGEMENT_VARBIT) == 1) DisplayMode.RESIZABLE_LIST else DisplayMode.RESIZABLE_NORMAL

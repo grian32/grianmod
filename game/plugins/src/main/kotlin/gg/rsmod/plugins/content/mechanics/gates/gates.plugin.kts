@@ -36,24 +36,24 @@ load_metadata {
     )
 }
 
-load_service(GateService())
+loadService(GateService())
 
-on_world_init {
+onWorldInit {
     world.getService(GateService::class.java)?.let { service ->
         service.gates.forEach { gate ->
-            on_obj_option(obj = gate.closed.hinge, option = "open", lineOfSightDistance = 1) {
+            onObjOption(obj = gate.closed.hinge, option = "open", lineOfSightDistance = 1) {
                 open_gate(player, player.getInteractingGameObj(), gate)
             }
 
-            on_obj_option(obj = gate.closed.extension, option = "open", lineOfSightDistance = 1) {
+            onObjOption(obj = gate.closed.extension, option = "open", lineOfSightDistance = 1) {
                 open_gate(player, player.getInteractingGameObj(), gate)
             }
 
-            on_obj_option(obj = gate.opened.hinge, option = "close", lineOfSightDistance = 1) {
+            onObjOption(obj = gate.opened.hinge, option = "close", lineOfSightDistance = 1) {
                 close_gate(player, player.getInteractingGameObj(), gate)
             }
 
-            on_obj_option(obj = gate.opened.extension, option = "close", lineOfSightDistance = 1) {
+            onObjOption(obj = gate.opened.extension, option = "close", lineOfSightDistance = 1) {
                 close_gate(player, player.getInteractingGameObj(), gate)
             }
         }

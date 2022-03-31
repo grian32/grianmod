@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.inter.options
 
-on_button(interfaceId = OptionsTab.INTERFACE_ID, component = 71) {
+onButton(interfaceId = OptionsTab.INTERFACE_ID, component = 71) {
     player.queue {
         while (true) {
 

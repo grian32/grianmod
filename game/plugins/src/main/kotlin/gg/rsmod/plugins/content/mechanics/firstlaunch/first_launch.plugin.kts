@@ -3,7 +3,7 @@ package gg.rsmod.plugins.content.mechanics.firstlaunch
 import gg.rsmod.game.model.priv.Privilege
 import gg.rsmod.plugins.content.inter.emotes.EmotesTab
 
-on_login {
+onLogin {
     if (world.gameContext.initialLaunch) {
         world.gameContext.initialLaunch = false
 

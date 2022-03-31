@@ -1,11 +1,11 @@
 package gg.rsmod.plugins.content.areas.edgeville.chat
 
 arrayOf(Npcs.SHOP_KEEPER_2821, Npcs.SHOP_ASSISTANT_2822).forEach { shop ->
-    on_npc_option(npc = shop, option = "talk-to") {
+    onNpcOption(npc = shop, option = "talk-to") {
         player.queue { dialog(this) }
     }
 
-    on_npc_option(npc = shop, option = "trade") {
+    onNpcOption(npc = shop, option = "trade") {
         open_shop(player)
     }
 }

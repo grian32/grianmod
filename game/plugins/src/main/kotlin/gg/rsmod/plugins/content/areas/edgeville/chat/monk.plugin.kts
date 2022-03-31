@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.areas.edgeville.chat
 
-on_npc_option(npc = Npcs.MONK_2579, option = "talk-to") {
+onNpcOption(npc = Npcs.MONK_2579, option = "talk-to") {
     player.queue { dialog(this) }
 }
 

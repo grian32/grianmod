@@ -21,7 +21,7 @@ private val unfPots = listOf(
 )
 
 unfPots.forEach { unfPot ->
-    on_item_on_item(unfPot.cleanHerb, Items.VIAL_OF_WATER) {
+    onItemOnItem(unfPot.cleanHerb, Items.VIAL_OF_WATER) {
         player.queue {
             UnfPotAction.makeUnfPot(this, unfPot)
         }

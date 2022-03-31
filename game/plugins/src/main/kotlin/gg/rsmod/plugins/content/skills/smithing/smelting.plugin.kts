@@ -47,11 +47,11 @@ fun smeltItem(player: Player, item: Int, amount: Int = 28) {
  */
 standardFurnaces.forEach { furnace ->
 
-    on_obj_option(obj = furnace, option = "smelt") { smeltStandard(player) }
+    onObjOption(obj = furnace, option = "smelt") { smeltStandard(player) }
 
-    standardBarIds.forEach { on_item_on_obj(obj = furnace, item = it) { smeltStandard(player) } }
+    standardBarIds.forEach { onItemOnObj(obj = furnace, item = it) { smeltStandard(player) } }
 
-    on_item_on_obj(obj = furnace, item = Items.LOVAKITE_ORE) {
+    onItemOnObj(obj = furnace, item = Items.LOVAKITE_ORE) {
         player.queue { messageBox("This furnace is the wrong temperature for lovakite ore.") }
     }
 }
@@ -68,5 +68,5 @@ fun smeltStandard(player: Player) {
 /**
  * Handles smelting at the Lovakite furnace
  */
-on_obj_option(obj = Objs.LOVAKITE_FURNACE, option = "smelt") { smeltItem(player, Items.LOVAKITE_BAR) }
-on_item_on_obj(obj = Objs.LOVAKITE_FURNACE, item = Items.LOVAKITE_ORE) { smeltItem(player, Items.LOVAKITE_BAR) }
+onObjOption(obj = Objs.LOVAKITE_FURNACE, option = "smelt") { smeltItem(player, Items.LOVAKITE_BAR) }
+onItemOnObj(obj = Objs.LOVAKITE_FURNACE, item = Items.LOVAKITE_ORE) { smeltItem(player, Items.LOVAKITE_BAR) }

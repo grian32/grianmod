@@ -14,9 +14,9 @@ private val pouches = setOf(
  * Bind item option events for the various essence pouches
  */
 pouches.forEach { pouch ->
-    on_item_option(item = pouch.id, option = "fill") { fillPouch(player, pouch) }
-    on_item_option(item = pouch.id, option = "empty") { emptyPouch(player) }
-    on_item_option(item = pouch.id, option = "check") { checkPouch(player) }
+    onItemOption(item = pouch.id, option = "fill") { fillPouch(player, pouch) }
+    onItemOption(item = pouch.id, option = "empty") { emptyPouch(player) }
+    onItemOption(item = pouch.id, option = "check") { checkPouch(player) }
 }
 
 /**

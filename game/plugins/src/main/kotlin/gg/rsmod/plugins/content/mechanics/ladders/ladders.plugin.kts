@@ -1,11 +1,11 @@
 package gg.rsmod.plugins.content.mechanics.ladders
 
-load_service(LadderService())
+loadService(LadderService())
 
-on_world_init {
+onWorldInit {
     world.getService(LadderService::class.java)?.let { service ->
         service.gates.climbUp.forEach { ladder ->
-            on_obj_option(ladder.id, "climb-up") {
+            onObjOption(ladder.id, "climb-up") {
                 ladder.locations.forEach { loc ->
                     player.queue {
                         if (player.tile == Tile(loc.start[0], loc.start[1], loc.start[2])) {
@@ -19,7 +19,7 @@ on_world_init {
         }
 
         service.gates.climbDown.forEach { ladder ->
-            on_obj_option(ladder.id, "climb-down") {
+            onObjOption(ladder.id, "climb-down") {
                 ladder.locations.forEach { loc ->
                     player.queue {
                         if (player.tile == Tile(loc.start[0], loc.start[1], loc.start[2])) {

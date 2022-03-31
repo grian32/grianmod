@@ -6,39 +6,39 @@ import gg.rsmod.game.model.attr.OTHER_ITEM_SLOT_ATTR
 import gg.rsmod.plugins.content.inter.bank.Bank.insert
 import gg.rsmod.plugins.content.inter.bank.Bank.removePlaceholder
 
-on_interface_open(Bank.BANK_INTERFACE_ID) {
+onInterfaceOpen(Bank.BANK_INTERFACE_ID) {
     player.bank.shift()
 }
 
-on_interface_close(Bank.BANK_INTERFACE_ID) {
+onInterfaceClose(Bank.BANK_INTERFACE_ID) {
     player.closeInterface(dest = InterfaceDestination.TAB_AREA)
     player.closeInputDialog()
 }
 
 intArrayOf(17, 19).forEachIndexed { index, button ->
-    on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = button) {
+    onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = button) {
         player.setVarbit(Bank.REARRANGE_MODE_VARBIT, index)
     }
 }
 
 intArrayOf(22, 24).forEachIndexed { index, button ->
-    on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = button) {
+    onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = button) {
         player.setVarbit(Bank.WITHDRAW_AS_VARBIT, index)
     }
 }
 
-on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 38) {
+onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = 38) {
     player.toggleVarbit(Bank.ALWAYS_PLACEHOLD_VARBIT)
 }
 
 intArrayOf(28, 30, 32, 34, 36).forEach { quantity ->
-    on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = quantity) {
+    onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = quantity) {
         val state = (quantity - 28) / 2
         player.setVarbit(Bank.QUANTITY_VARBIT, state)
     }
 }
 
-on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 42) {
+onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = 42) {
     val from = player.inventory
     val to = player.bank
 
@@ -63,7 +63,7 @@ on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 42) {
     }
 }
 
-on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 44) {
+onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = 44) {
     val from = player.equipment
     val to = player.bank
 
@@ -89,7 +89,7 @@ on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 44) {
     }
 }
 
-on_button(interfaceId = Bank.INV_INTERFACE_ID, component = Bank.INV_INTERFACE_CHILD) p@ {
+onButton(interfaceId = Bank.INV_INTERFACE_ID, component = Bank.INV_INTERFACE_CHILD) p@ {
     val opt = player.getInteractingOption()
     val slot = player.getInteractingSlot()
     val item = player.inventory[slot] ?: return@p
@@ -146,7 +146,7 @@ on_button(interfaceId = Bank.INV_INTERFACE_ID, component = Bank.INV_INTERFACE_CH
     Bank.deposit(player, item.id, amount)
 }
 
-on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 13) p@ {
+onButton(interfaceId = Bank.BANK_INTERFACE_ID, component = 13) p@ {
     val opt = player.getInteractingOption()
     val slot = player.getInteractingSlot()
     val item = player.bank[slot] ?: return@p
@@ -231,7 +231,7 @@ on_button(interfaceId = Bank.BANK_INTERFACE_ID, component = 13) p@ {
 /**
  * Swap items in bank inventory interface.
  */
-on_component_to_component_item_swap(
+onComponentToComponentItemSwap(
         srcInterfaceId = Bank.INV_INTERFACE_ID, srcComponent = Bank.INV_INTERFACE_CHILD,
         dstInterfaceId = Bank.INV_INTERFACE_ID, dstComponent = Bank.INV_INTERFACE_CHILD) {
     val srcSlot = player.attr[INTERACTING_ITEM_SLOT]!!
@@ -247,7 +247,7 @@ on_component_to_component_item_swap(
 /**
  * Swap items in main bank tab.
  */
-on_component_to_component_item_swap(
+onComponentToComponentItemSwap(
         srcInterfaceId = Bank.BANK_INTERFACE_ID, srcComponent = Bank.BANK_MAINTAB_COMPONENT,
         dstInterfaceId = Bank.BANK_INTERFACE_ID, dstComponent = Bank.BANK_MAINTAB_COMPONENT) {
     val srcSlot = player.attr[INTERACTING_ITEM_SLOT]!!

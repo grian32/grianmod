@@ -5,13 +5,13 @@ import gg.rsmod.game.model.attr.FACING_PAWN_ATTR
 val SEARCH_FOR_PATH_TIMER = TimerKey()
 val SEARCH_FOR_PATH_DELAY = 15..30
 
-on_global_npc_spawn {
+onGlobalNpcSpawn {
     if (npc.walkRadius > 0) {
         npc.timers[SEARCH_FOR_PATH_TIMER] = world.random(SEARCH_FOR_PATH_DELAY)
     }
 }
 
-on_timer(SEARCH_FOR_PATH_TIMER) {
+onTimer(SEARCH_FOR_PATH_TIMER) {
     if (npc.isActive() && npc.lock.canMove()) {
         val facing = npc.attr[FACING_PAWN_ATTR]?.get()
 

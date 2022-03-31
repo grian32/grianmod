@@ -22,7 +22,7 @@ private val HERBS = listOf(
 
 
 HERBS.forEach { herb ->
-    on_item_option(herb.grimyHerb, "clean") {
+    onItemOption(herb.grimyHerb, "clean") {
         player.queue {
             CleaningAction.cleanHerb(this, herb)
         }

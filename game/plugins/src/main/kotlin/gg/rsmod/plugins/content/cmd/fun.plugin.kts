@@ -1,6 +1,6 @@
 package gg.rsmod.plugins.content.cmd
 
-on_command("peppe") {
+onCommand("peppe") {
     // discord.gg/bitrune
     player.message("Peppe likes bananas")
 }
