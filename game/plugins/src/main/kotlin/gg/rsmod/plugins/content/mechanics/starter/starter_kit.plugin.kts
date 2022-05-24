@@ -2,7 +2,7 @@ package gg.rsmod.plugins.content.mechanics.starter
 
 import gg.rsmod.game.model.attr.NEW_ACCOUNT_ATTR
 
-load_metadata {
+loadMetadata {
     propertyFileName = "starter_kit"
 
     author = "Tomm"

@@ -99,7 +99,7 @@ abstract class KotlinPlugin(private val r: PluginRepository, val world: World, v
      */
     fun setMultiCombatRegion(region: Int) {
         r.multiCombatRegions.add(region)
-    }]
+    }
 
     /**
      * Set the [NpcCombatDef] for npcs with [Npc.id] of [npc].

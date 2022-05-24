@@ -25,7 +25,7 @@ val changesBeforeStick: Int
 val resetStickDelay: Int
     get() = getProperty<Int>(RESET_STICK_DELAY_TAG)!!
 
-load_metadata {
+loadMetadata {
     propertyFileName = "doors"
 
     author = "Tomm"
