@@ -479,16 +479,16 @@ abstract class Pawn(val world: World) : Entity() {
         return route
     }
 
-    fun moveTo(x: Int, z: Int, height: Int = 0) {
+    fun moveTo(x: Int, z: Int, height: Int = 0, alwaysTeleport: Boolean = false) {
         moved = true
-        blockBuffer.teleport = !tile.isWithinRadius(x, z, height, Player.NORMAL_VIEW_DISTANCE)
+        blockBuffer.teleport = if(alwaysTeleport) true else !tile.isWithinRadius(x, z, height, Player.NORMAL_VIEW_DISTANCE)
         tile = Tile(x, z, height)
         movementQueue.clear()
         addBlock(UpdateBlockType.MOVEMENT)
     }
 
-    fun moveTo(tile: Tile) {
-        moveTo(tile.x, tile.z, tile.height)
+    fun moveTo(tile: Tile, alwaysTeleport: Boolean = false) {
+        moveTo(tile.x, tile.z, tile.height, alwaysTeleport)
     }
 
     fun animate(id: Int, delay: Int = 0) {
