@@ -54,7 +54,7 @@ fun Player.message(message: String, type: ChatMessageType = ChatMessageType.CONS
     write(MessageGameMessage(type = type.id, message = message, username = username))
 }
 
-fun Player.filterableMessage(message: String) {
+fun Player.spam(message: String) {
     write(MessageGameMessage(type = ChatMessageType.SPAM.id, message = message, username = null))
 }
 
@@ -291,6 +291,9 @@ fun Player.sendRunEnergy(energy: Int) {
     write(UpdateRunEnergyMessage(energy))
 }
 
+/**
+ * Volume may also be known as repetitions.
+ */
 fun Player.playSound(id: Int, volume: Int = 1, delay: Int = 0) {
     write(SynthSoundMessage(sound = id, volume = volume, delay = delay))
 }
@@ -527,6 +530,9 @@ fun Player.getMagicDamageBonus(): Int = equipmentBonuses[12]
 
 fun Player.getPrayerBonus(): Int = equipmentBonuses[13]
 
+/**
+ * @author Grian
+ */
 fun Player.addWoodcuttingXp(xp: Double) {
     var multiplier = 1.0
 

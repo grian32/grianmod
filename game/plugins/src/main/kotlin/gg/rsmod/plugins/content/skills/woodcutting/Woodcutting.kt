@@ -25,7 +25,7 @@ object Woodcutting {
         val logName = p.world.definitions.get(ItemDef::class.java, tree.log).name
         val axe = AxeType.values.firstOrNull { p.getSkills().getMaxLevel(Skills.WOODCUTTING) >= it.level && (p.equipment.contains(it.item) || p.inventory.contains(it.item)) }!!
 
-        p.filterableMessage("You swing your axe at the tree.")
+        p.spam("You swing your axe at the tree.")
         while (true) {
             p.animate(axe.animation)
             it.wait(2)
@@ -37,7 +37,7 @@ object Woodcutting {
 
             val level = p.getSkills().getCurrentLevel(Skills.WOODCUTTING)
             if (level.interpolate(minChance = 60, maxChance = 190, minLvl = 1, maxLvl = 99, cap = 255)) {
-                p.filterableMessage("You get some ${logName.pluralSuffix(2)}.")
+                p.spam("You get some ${logName.pluralSuffix(2)}.")
                 p.playSound(3600)
                 p.inventory.add(tree.log)
                 p.addWoodcuttingXp(tree.xp)
