@@ -1,9 +1,12 @@
 package gg.rsmod.plugins.api.ext
 
+import gg.rsmod.game.fs.def.AnimDef
 import gg.rsmod.game.fs.def.ItemDef
 import gg.rsmod.game.fs.def.NpcDef
 import gg.rsmod.game.message.impl.ResumePauseButtonMessage
 import gg.rsmod.game.model.Appearance
+import gg.rsmod.game.model.MovementQueue
+import gg.rsmod.game.model.Tile
 import gg.rsmod.game.model.attr.INTERACTING_NPC_ATTR
 import gg.rsmod.game.model.entity.Npc
 import gg.rsmod.game.model.entity.Pawn
@@ -394,4 +397,32 @@ suspend fun QueueTask.produceItemBox(vararg items: Int, title: String = "What wo
     val qty = msg.slot
 
     logic(player, item, qty)
+}
+
+/**
+ * @author Grian
+ */
+suspend fun QueueTask.withAnimationSet(animationSet: IntArray, logic: suspend Player.() -> Unit) {
+    val originalAnims = player.anims
+    player.updateAnims(animationSet)
+    logic(player)
+    player.updateAnims(originalAnims)
+}
+
+/**
+ * @author Grian
+ */
+suspend fun QueueTask.walkToBlocking(tile: Tile, stepType: MovementQueue.StepType = MovementQueue.StepType.NORMAL, detectCollision: Boolean = true) {
+    player.walkTo(tile, stepType, detectCollision)
+    wait {
+        player.tile == tile
+    }
+}
+
+/**
+ * @author Grian
+ */
+suspend fun QueueTask.animateBlocking(id: Int, delay: Int = 0) {
+    player.animate(id, delay)
+    wait(player.world.definitions.get(AnimDef::class.java, id).cycleLength)
 }
