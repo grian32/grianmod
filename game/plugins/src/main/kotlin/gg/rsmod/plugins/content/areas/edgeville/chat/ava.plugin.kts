@@ -18,6 +18,7 @@ onNpcOption(Npcs.AVA, "talk-to") {
             }
             2 -> {
                 player.message("Ava slaps you.")
+                player.getInteractingNpc().animate(2107)
                 player.hit(1)
             }
         }
