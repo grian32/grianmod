@@ -2,7 +2,7 @@
 **GrianMod** is a fork of Tomm0017's RSMod1 and is mostly used as a way for me to experiment/play around with RSPS, it has a bunch of content on top of what RSMod1 ships with along with some extra utilities in core/additional packets.
 One of the bigger breaking changes is renaming all event function names from `snake_case` to `camelCase`, mostly because I didn't like it.
 
-I'm not planning to upgrade the revision at the moment, if you want a version of RSMod1 upgraded to one of the latest OSRS Revisions I'd reccomend checking out [Alter](https://github.com/AlterRSPS/Alter).
+I'm not planning to upgrade the revision at the moment, if you want a version of RSMod1 upgraded to one of the latest OSRS Revisions I'd reccomend checking out [Alter](https://github.com/AlterRSPS/Alter). 
 
 ## Getting Started
 You can learn how to get started here: [RS Mod Wiki](https://github.com/Tomm0017/rsmod/wiki/Creating-Plugins)
