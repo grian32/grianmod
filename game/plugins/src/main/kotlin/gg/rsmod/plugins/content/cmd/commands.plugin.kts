@@ -328,6 +328,19 @@ onCommand("clip") {
     }
 }
 
+onCommand("objinfo") {
+    val args = player.getCommandArgs()
+
+    tryWithUsage(player, args, "Invalid format! Example of proper command <col=801700>::objinfo 214</col>") { values ->
+        val objId = values[0].toInt()
+        val defs = world.definitions.get(ObjectDef::class.java, objId)
+
+        player.message("Varbit for $objId: ${defs.varbit}")
+        player.message("Varp for $objId: ${defs.varp}")
+        player.message("Options for $objId: ${defs.options.toList()}")
+    }
+}
+
 fun tryWithUsage(player: Player, args: Array<String>, failMessage: String, tryUnit: Function1<Array<String>, Unit>) {
     try {
         tryUnit.invoke(args)
