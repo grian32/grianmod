@@ -17,7 +17,7 @@ onNpcOption(Npcs.SEDRIDOR, "talk-to") {
         )
         chatPlayer("Hello there.", title = player.username)
         chatNpc(
-            "Hello again ${player.username}. What can I do for oyu?",
+            "Hello again ${player.username}. What can I do for you?",
             npc = Npcs.SEDRIDOR,
             title = "Sedridor"
         )
