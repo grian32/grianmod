@@ -6,18 +6,18 @@ arrayOf(Npcs.SHOP_KEEPER_2821, Npcs.SHOP_ASSISTANT_2822).forEach { shop ->
     }
 
     onNpcOption(npc = shop, option = "trade") {
-        open_shop(player)
+        openShop(player)
     }
 }
 
 suspend fun dialog(it: QueueTask) {
     it.chatNpc("Can I help you at all?", animation = 567)
     when (it.options("Yes please. What are you selling?", "No thanks.")) {
-        1 -> open_shop(it.player)
+        1 -> openShop(it.player)
         2 -> it.chatPlayer("No thanks.", animation = 588)
     }
 }
 
-fun open_shop(p: Player) {
+fun openShop(p: Player) {
     p.openShop("Edgeville General Store")
 }
