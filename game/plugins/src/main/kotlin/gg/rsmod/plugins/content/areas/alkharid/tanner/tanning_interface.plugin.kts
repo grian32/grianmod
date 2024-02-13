@@ -1,4 +1,4 @@
-package gg.rsmod.plugins.content.npcs.tanner
+package gg.rsmod.plugins.content.areas.alkharid.tanner
 
 val TANNING_INTERFACE = 324
 
