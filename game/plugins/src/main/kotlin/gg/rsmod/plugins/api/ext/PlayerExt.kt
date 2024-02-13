@@ -553,3 +553,26 @@ fun Player.addWoodcuttingXp(xp: Double) {
 
     addXp(Skills.WOODCUTTING, xp * multiplier)
 }
+
+
+fun Player.addFiremakingXp(xp: Double) {
+    var multiplier = 1.0
+
+    if (hasEquipped(EquipmentType.HEAD, Items.PYROMANCER_HOOD)) multiplier += 0.004
+
+    if (hasEquipped(EquipmentType.CHEST, Items.PYROMANCER_GARB)) multiplier += 0.008
+
+    if (hasEquipped(EquipmentType.LEGS, Items.PYROMANCER_ROBE)) multiplier += 0.006
+
+    if (hasEquipped(EquipmentType.BOOTS, Items.PYROMANCER_BOOTS)) multiplier += 0.002
+
+    if (hasEquipped(intArrayOf(
+            Items.PYROMANCER_HOOD,
+            Items.PYROMANCER_GARB,
+            Items.PYROMANCER_ROBE,
+            Items.PYROMANCER_BOOTS
+        ))) multiplier += 0.005
+
+    addXp(Skills.FIREMAKING, xp * multiplier)
+
+}
