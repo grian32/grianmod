@@ -39,8 +39,15 @@ object Woodcutting {
             if (level.interpolate(minChance = 60, maxChance = 190, minLvl = 1, maxLvl = 99, cap = 255)) {
                 p.spam("You get some ${logName.pluralSuffix(2)}.")
                 p.playSound(3600)
-                p.inventory.add(tree.log)
+                var burnt = false
                 p.addWoodcuttingXp(tree.xp)
+
+                if (axe == AxeType.INFERNAL && p.world.random(2) == 0 && tree != TreeType.HOLLOW) {
+                    burnt = true
+                    p.addFiremakingXp(tree.firemakingXp)
+                }
+
+                if (!burnt) { p.inventory.add(tree.log) }
 
                 if (p.world.random(tree.depleteChance) == 0) {
                     p.animate(-1)
