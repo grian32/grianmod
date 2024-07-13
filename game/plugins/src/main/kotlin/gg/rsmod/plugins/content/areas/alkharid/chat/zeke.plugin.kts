@@ -1,5 +1,8 @@
 package gg.rsmod.plugins.content.areas.alkharid.chat
 
+
+// TODO: add al kharid flyer interaction
+
 onNpcOption(Npcs.ZEKE, "Trade") {
     player.openShop("Zeke's Superior Scimitar")
 }
