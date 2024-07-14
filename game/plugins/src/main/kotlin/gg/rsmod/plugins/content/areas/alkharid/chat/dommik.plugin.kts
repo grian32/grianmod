@@ -26,3 +26,4 @@ onNpcOption(Npcs.DOMMIK, "Talk-to") {
 }
 
 // TODO: add al kharid flyer interaction
+// TODO: change dialogue to post quest completion
